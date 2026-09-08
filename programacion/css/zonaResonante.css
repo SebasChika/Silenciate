@@ -1,0 +1,314 @@
+* {
+    cursor: url('../cursores/arrow.cur'), default;
+    user-select: none;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    background:
+        radial-gradient(ellipse at top, var(--azulMasClaro) 0%, transparent 55%),
+        radial-gradient(at 70% 80%, var(--azulMasClaro) 0%, transparent 60%),
+        linear-gradient(to bottom,
+            var(--azulSuperOscuro) 0%,
+            #0d0f1a 30%,
+            var(--azulMasClaro) 100%);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+:root {
+    --beige: #e3dcd4;
+    --beigeClaro: #ebebeb;
+    --azulSuperOscuro: #080910;
+    --azulMasClaro: #212030;
+    --gris: #5f5f5f;
+    --degradez: #5d5756;
+    --borde: #383535;
+    --atrasTexto: #242424;
+    --beigeOscuro: #c5beb6;
+}
+
+#center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+#contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 95%;
+    width: 95%;
+    background: radial-gradient(ellipse at top center, white 0%, var(--beige) 30%, var(--degradez) 90%, transparent 100%);
+    border-radius: 20px;
+    margin: 0;
+}
+
+
+#titulo {
+    font-family: titulos;
+    color: #272525;
+    ;
+    opacity: 0.8;
+    font-size: 3em;
+    margin: 0px;
+}
+
+#headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
+
+#historia {
+    background-image: url('../imagenes/zonaResonante/pasillo_oeste.png');
+    height: 85%;
+    width: 95%;
+    border-radius: 20px;
+    border: 4px solid var(--borde);
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    position: relative;
+
+}
+
+#logo {
+    height: 70px;
+    width: 65px;
+    pointer-events: all;
+}
+
+p {
+    color: var(--borde);
+    margin: 0px;
+    font-size: 0.8em;
+}
+
+#actualDb {
+    color: rgb(230, 236, 255);
+    text-shadow: 0 0 15px rgb(171, 188, 243);
+}
+
+#contenedorPromedio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 30px;
+    border-radius: 5px;
+    background-color: #1a1e31;
+    border: 3px solid var(--borde);
+    color: rgb(230, 236, 255);
+    text-shadow: 0 0 15px rgb(171, 188, 243);
+    margin: 0px;
+    font-size: 1.5em;
+}
+
+#derecha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    pointer-events: none;
+
+}
+
+#promedio {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: titulos;
+}
+
+@font-face {
+    font-family: titulos;
+    src: url('../fuentes/titulos.otf');
+}
+
+#negro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    z-index: 100;
+    opacity: 1;
+    background-color: black;
+    pointer-events: none;
+}
+
+.quitarNegro {
+    animation: fade-in 4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+#empezarAnalisis {
+    font-family: text;
+    text-shadow: 0 0 15px white;
+    color: white;
+    pointer-events: all;
+    border: none;
+    background-color: transparent
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
+#personaje {
+    position: absolute;
+    bottom: 0;
+    right: -15px;
+    z-index: 99;
+
+    height: 120%;
+    aspect-ratio: 1/1;
+
+    background-image: url('../imagenes/zonaResonante/personajes/sebastian/idleSebas.png');
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    image-rendering: pixelated;
+    pointer-events: none;
+    filter: drop-shadow(0 0 15px rgb(0, 0, 0));
+}
+
+
+.hablar {
+    background-image: url('../imagenes/zonaResonante/personajes/sebastian/sebastianTalking.png') !important;
+}
+
+#texto {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    bottom: 20px;
+    left: 120px;
+    opacity: 0;
+    height: 170px;
+    width: 90%;
+    margin: 0 10px;
+    padding: 15px 35px;
+    box-sizing: border-box;
+    background:
+        linear-gradient(to bottom,
+            #f3efdf 0%,
+            #e6e0cd 50%,
+            #8d8b85 100%);
+
+    border: 6px solid #807b72;
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 15px black,
+        inset 0 0 15px 3px #f1e7c5c4,
+        inset 0 0 15px rgba(0, 0, 0, 0.15),
+        0 0 0 4px #3a3834,
+        0 8px 0 #726c675e;
+    image-rendering: pixelated;
+    font-family: text;
+    z-index: 3;
+    mask-image: linear-gradient(to right,
+            rgba(0, 0, 0, 1) 70%,
+            rgba(0, 0, 0, 0));
+
+    -webkit-mask-image: linear-gradient(to right,
+            rgba(0, 0, 0, 1) 70%,
+            rgba(0, 0, 0, 0));
+
+}
+
+.aparecerRecuadro {
+    animation-name: aparecerTexto;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes aparecerTexto {
+    from {
+        left: 120px;
+        opacity: 0;
+    }
+
+    to {
+        left: 0px;
+        opacity: 1;
+    }
+
+}
+
+#texto h1 {
+    margin: 0 0 8px 0;
+    font-size: 1.2em;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #2a1a0d;
+    font-family: texttt;
+    text-shadow:
+        2px 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.aparecerTexto {
+    animation: aparecerText 4s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+@keyframes aparecerText {
+    from {
+        letter-spacing: 10px;
+    }
+
+    to {
+        letter-spacing: 0px;
+    }
+
+}
+
+#texto p {
+    margin: 0;
+    width: 60%;
+    font-family: text;
+    font-size: 1em;
+    line-height: 1.4;
+    color: #3b2b1c;
+    text-shadow:
+        1px 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+#cuento span {
+    opacity: 0;
+    transition: opacity 0.05s linear;
+}
+
+@font-face {
+    font-family: text;
+    src: url('../fuentes/PixelOperator8-Bold.ttf');
+}
+
+@font-face {
+    font-family: texttt;
+    src: url('../fuentes/crypt-of-tomorrow-ut-font-no-rus.ttf');
+}

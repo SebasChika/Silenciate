@@ -1,0 +1,419 @@
+@font-face {
+    font-family: 'nise';
+    src: url('../fuentes/normalFont.ttf');
+}
+
+@font-face {
+    font-family: 'horizon';
+    src: url('../fuentes/titulos.otf');
+}
+
+/* ── Reset / Base ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --beige: #e3dcd4c4;
+    --beigeClaro: #ebebeb;
+    --azulSuperOscuro: #080910;
+    --azulMasClaro: #212030;
+    --gris: #5f5f5f;
+    --degradez: #5d5756;
+    --borde: #383535;
+    --atrasTexto: #242424;
+    --beigeOscuro: #c5beb6;
+}
+
+
+body {
+    background-color: #0b0f19;
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* ── Header exacto como en Canva ──────────────────────────────────────────── */
+header {
+    background-color: #A9A4A0;
+    color: #423E3A;
+    padding: 10px;
+    text-align: center;
+    font-family: 'horizon', sans-serif;
+    width: 100%;
+    height: 15vh;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background: radial-gradient(ellipse at top center, white 0%, var(--beige) 20%, var(--degradez) 80%, transparent 100%);
+}
+
+header h1 {
+    font-family: horizon;
+    color: var(--borde);
+    font-size: 2.5em;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+    transform: translateY(-10px);
+}
+
+#logo {
+    height: 12vh;
+    left: 2vw;
+    top: 1.5vh;
+    position: absolute;
+    z-index: 1;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+#mensaje {
+    position: fixed;
+    font-family: 'nise';
+    color: #A9A4A0;
+    font-size: 20px;
+    z-index: 9999;
+    left: 10%;
+    top: -3%;
+    transition: all 3s;
+}
+
+#mensaje:hover::after {
+    content: "Te amo con todo mi ser mi leli hermosa";
+    color: #80726e;
+    scale: 1.5;
+}
+
+/* ── Cuerdas (Bandas grises del Canva) ────────────────────────────────────── */
+.cuerdas {
+    position: absolute;
+    width: 4.5vw;
+    height: 10vh;
+    background: radial-gradient(ellipse at bottom center, white 0%, var(--beige) 20%, var(--degradez) 80%, transparent 100%);
+    z-index: 50;
+    top: 13vh;
+}
+
+#cuerda1 {
+    left: 16vw;
+}
+
+#cuerda2 {
+    right: 16vw;
+}
+
+/* ── Disco decorativo ─────────────────────────────────────────────────────── */
+#disco {
+    position: fixed;
+    left: -9vw;
+    bottom: -15vh;
+    width: 20vw;
+    animation: girar 20s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* ── Main Layout ──────────────────────────────────────────────────────────── */
+main {
+    position: relative;
+    padding-top: 23vh;
+    /* Debajo de cuerdas */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    animation: slow-in 4s cubic-bezier(0.38, 0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes slow-in {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+}
+
+#calendario {
+    box-shadow: inset 0 0 15px bl;
+}
+
+/* ── Calendario (Estilo Canva) ────────────────────────────────────────────── */
+.cal-wrap {
+    background-color: #D3CDC6;
+    border-radius: 20px;
+    padding: 2vw 2vw;
+    width: 80vw;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 60;
+}
+
+/* Cabecera del calendario (minimalista para no ensuciar el diseño) */
+.cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.cal-title {
+    font-family: 'horizon', sans-serif;
+    font-size: 1.4vw;
+    color: #423E3A;
+    opacity: 0.8;
+}
+
+.cal-nav {
+    display: flex;
+    gap: 0.5vw;
+}
+
+.cal-btn {
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    font-family: 'horizon', sans-serif;
+    color: #423E3A;
+    font-size: 1.2vw;
+    padding: 0.5vw 1vw;
+    cursor: pointer;
+    transition: background 0.2s;
+    opacity: 0.8;
+}
+
+.cal-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* Grid de 10 columnas */
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1vw;
+}
+
+/* Celdas del calendario (Píldoras) */
+.cal-day {
+    aspect-ratio: 1.1 / 1;
+    background-color: #A9A4A0;
+    border-radius: 12px;
+    font-family: 'horizon', sans-serif;
+    color: #383431;
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.15s, background-color 0.15s, box-shadow 0.15s;
+}
+
+.cal-day:hover {
+    transform: translateY(-4px) scale(1.05);
+    background-color: #BDB8B3;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.cal-day.today {
+    background-color: #03428a;
+    color: #D3CDC6;
+    transform: scale(1.05);
+}
+
+.cal-day.today:hover {
+    background-color: #2F2A28;
+}
+
+/* ── Animaciones ──────────────────────────────────────────────────────────── */
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Bolita Azul ─────────────────────────────────────────────────────────── */
+.cal-day .blue-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 13px;
+    height: 13px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.8), 0 0 2px rgba(59, 130, 246, 1);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* ── Modal de Mediciones ─────────────────────────────────────────────────── */
+#mediciones-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(6, 5, 10, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInModal 0.25s ease forwards;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#mediciones-modal .modal-content {
+    background-color: #D3CDC6;
+    border: 4px solid #423E3A;
+    border-radius: 20px;
+    padding: 28px 24px 20px;
+    width: 92%;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    animation: scaleInModal 0.25s ease forwards;
+}
+
+@keyframes scaleInModal {
+    from {
+        transform: scale(0.88);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+#mediciones-modal h3 {
+    font-family: 'horizon', sans-serif;
+    color: #423E3A;
+    margin: 0 0 16px;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Contenedor con scroll para la tabla */
+#mediciones-modal .table-container {
+    max-height: 260px;
+    overflow-y: auto;
+    margin-bottom: 18px;
+    border: 2px solid #8c857e;
+    border-radius: 10px;
+    background-color: #A9A4A0;
+}
+
+/* Tabla — scoped bajo el modal para no afectar el resto de la página */
+#mediciones-modal table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#mediciones-modal th,
+#mediciones-modal td {
+    padding: 9px 7px;
+    border: 1px solid #8c857e;
+    text-align: center;
+}
+
+#mediciones-modal th {
+    background-color: #423E3A;
+    color: #D3CDC6;
+    font-family: 'horizon', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#mediciones-modal td {
+    color: #2F2A28;
+    font-size: 0.93rem;
+}
+
+
+
+@keyframes slow-in {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+}
+
+
+#mediciones-modal tr:nth-child(even) td {
+    background-color: #B8B3AD;
+}
+
+/* Botón Cerrar */
+.modal-close-btn {
+    font-family: 'horizon', sans-serif;
+    background-color: #423E3A;
+    color: #D3CDC6;
+    padding: 10px 28px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.modal-close-btn:hover {
+    background-color: #55504a;
+    transform: scale(1.04);
+}
+
+#negro {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    z-index: 10022;
+    opacity: 1;
+    background-color: black;
+    pointer-events: none;
+    animation: fade-in 5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}

@@ -1,0 +1,228 @@
+* {
+    cursor: url('../cursores/arrow.cur'), default;
+    user-select: none;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    background:
+        radial-gradient(ellipse at top, var(--azulMasClaro) 0%, transparent 55%),
+        radial-gradient(at 70% 80%, var(--azulMasClaro) 0%, transparent 60%),
+        linear-gradient(to bottom,
+            var(--azulSuperOscuro) 0%,
+            #0d0f1a 30%,
+            var(--azulMasClaro) 100%);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+:root {
+    --beige: #e3dcd4;
+    --beigeClaro: #ebebeb;
+    --azulSuperOscuro: #080910;
+    --azulMasClaro: #212030;
+    --gris: #5f5f5f;
+    --degradez: #5d5756;
+    --borde: #383535;
+    --atrasTexto: #242424;
+    --beigeOscuro: #c5beb6;
+}
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -150px;
+    flex-direction: row;
+    background: radial-gradient(ellipse at top center, white 0%, var(--beige) 20%, var(--degradez) 60%, transparent 100%);
+    animation: slow-in 2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes slow-in {
+    from {
+        top: -150px;
+    }
+
+    to {
+        top: 0px;
+    }
+
+}
+
+main {
+    height: 82%;
+}
+
+#logo {
+    position: absolute;
+    left: 10px;
+    width: 80px;
+    height: auto;
+    margin: 10px;
+}
+
+header h1 {
+    font-family: titulos;
+    color: var(--borde);
+    font-size: 2.5em;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+}
+
+#both {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+}
+
+#uno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 50vw;
+    height: 100%;
+    transform: translateX(-30px) scale(0.9);
+}
+
+#dos {
+    transform: translateY(-40px) translateX(-40px)scale(0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100%;
+    margin-left: auto;
+}
+
+#problema h1,
+#solucion h1 {
+    font-family: titulos;
+    font-size: 1.2em;
+    color: var(--borde);
+    margin: 0;
+}
+
+#problema p,
+#solucion p {
+    font-family: normalita;
+    font-size: 1em;
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+
+#problema {
+    transform: translateX(-30px);
+}
+
+
+#solucion,
+#problema {
+    position: relative;
+    text-align: center;
+    width: 65%;
+    height: auto;
+    background-color: var(--beigeOscuro);
+    border-radius: 20px;
+    background: radial-gradient(ellipse at top center, white 0%, var(--beige) 20%, var(--degradez) 80%, transparent 100%);
+}
+
+#solucion {
+    animation: 3s derechaDesde cubic-bezier(0.215, 0.610, 0.355, 1), forwards
+}
+
+
+#problema {
+    animation: 3s izquierdaDesde cubic-bezier(0.215, 0.610, 0.355, 1), forwards
+}
+
+@keyframes izquierdaDesde {
+    from {
+        left: -30px;
+        opacity: 0;
+    }
+
+    to {
+        left: 0px;
+        opacity: 1;
+
+    }
+
+}
+
+@keyframes derechaDesde {
+    from {
+        right: -30px;
+        opacity: 0;
+    }
+
+    to {
+        right: 0px;
+        opacity: 1;
+
+    }
+
+}
+
+.tarjeta {
+    position: absolute;
+    width: 95px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    will-change: transform, opacity;
+    transition: transform 0.1s linear;
+}
+
+#negro {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    inset: 0;
+    z-index: 1000;
+    opacity: 1;
+    background-color: black;
+    pointer-events: none;
+    animation: fade-in 4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
+
+@font-face {
+    font-family: titulos;
+    src: url('../fuentes/titulos.otf');
+}
+
+@font-face {
+    font-family: normalita;
+    src: url('../fuentes/normalFont.ttf');
+}

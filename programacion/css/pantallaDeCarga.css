@@ -1,0 +1,342 @@
+* {
+    cursor: url('../cursores/arrow.cur'), default;
+    user-select: none;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    background:
+        radial-gradient(ellipse at top, var(--azulMasClaro) 0%, transparent 55%),
+        radial-gradient(at 70% 80%, var(--azulMasClaro) 0%, transparent 60%),
+        linear-gradient(to bottom,
+            var(--azulSuperOscuro) 0%,
+            #0d0f1a 30%,
+            var(--azulMasClaro) 100%);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+:root {
+    --beige: #e3dcd4;
+    --beigeClaro: #ebebeb;
+    --azulSuperOscuro: #080910;
+    --azulMasClaro: #212030;
+    --gris: #5f5f5f;
+    --degradez: #5d5756;
+    --borde: #383535;
+    --atrasTexto: #242424;
+    --beigeOscuro: #c5beb6;
+}
+
+#center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#cabeza,
+#cuerpo,
+#sombrero,
+#mano {
+    position: absolute;
+    transform: scale(1.5);
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.507));
+}
+
+#sombrero {
+    left: -5%;
+    bottom: 29%;
+    animation-name: subirSombrero;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes subirSombrero {
+    from {
+        bottom: 29%;
+    }
+
+    to {
+        bottom: 37%;
+    }
+}
+
+
+#cabeza {
+    bottom: 19%;
+    animation-delay: 3s;
+    animation: subirCabeza 2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+}
+
+@keyframes subirCabeza {
+    from {
+        bottom: 19%;
+    }
+
+    to {
+        bottom: 27%;
+    }
+}
+
+#mano {
+    opacity: 0;
+    left: -30%;
+    bottom: 5px;
+    animation: subirMano 3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 4.5s;
+}
+
+@keyframes subirMano {
+    from {
+        bottom: -120px;
+    }
+
+    to {
+        opacity: 1;
+        bottom: 5px;
+    }
+}
+
+#cuerpo {
+    left: -6%;
+    bottom: -10%;
+    transform: rotate(30deg) scale(1.7);
+    animation: cambiarCuerpo 2s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+    animation-delay: 3s;
+}
+
+@keyframes cambiarCuerpo {
+    from {
+        left: -6%;
+        bottom: -10%;
+        transform: rotate(30deg) scale(1.7);
+
+    }
+
+    to {
+        left: 1%;
+        bottom: -7%;
+        transform: scale(1.6);
+    }
+}
+
+#all {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 45%;
+    background: radial-gradient(ellipse at top, #ffff 0%, #ffffff4b 100%),
+        radial-gradient(at 70% 80%, var(--azulMasClaro) 0%, transparent 60%);
+    border: 4px solid gray;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: translateY(150px);
+    opacity: 1;
+}
+
+#all::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 10px solid #212030b7;
+    opacity: 0;
+}
+
+#all.rotando::before {
+    opacity: 1;
+    animation: rotarBorde 2s linear infinite;
+}
+
+@keyframes rotarBorde {
+    from {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(360deg);
+    }
+}
+
+.inAll {
+    animation: inAll 3s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+@keyframes inAll {
+    from {
+        transform: translateY(150px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+}
+
+.subirAll {
+    animation: subirAll 3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes subirAll {
+    from {
+        transform: translateY(0px) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-15px)scale(0.5);
+        opacity: 1;
+    }
+
+}
+
+#negro {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    z-index: 100;
+    opacity: 1;
+    background-color: black;
+    pointer-events: none;
+    animation: fade-in 4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
+#mensaje {
+    display: flex;
+    position: absolute;
+    bottom: -15px;
+    gap: 20px;
+    opacity: 0;
+    flex-direction: row;
+}
+
+.entrar {
+    animation: entrar 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+}
+
+.salir {
+    animation: salir 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+}
+
+
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes salir {
+    from {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.subirMensaje {
+    animation: subirMensaje 2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes subirMensaje {
+    from {
+        bottom: -15px;
+        opacity: 0;
+
+    }
+
+    to {
+        opacity: 1;
+        bottom: 1px;
+    }
+
+}
+
+#carga {
+    font-weight: bold;
+}
+
+#mensaje p {
+    color: rgba(255, 255, 255, 0.63);
+    font-family: normali;
+    font-size: 2em;
+}
+
+#porcentaje {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: rgba(255, 255, 255, 0.719);
+    font-family: titulos;
+    opacity: 0;
+}
+
+.subirPor{
+    animation: porcentaje 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes porcentaje {
+    from {
+        opacity: 0;
+        top: -10px;
+        left: -10px;
+    }
+
+    to {
+        opacity: 1;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+@font-face {
+    font-family: normali;
+    src: url('../fuentes/normalFont.ttf');
+}
+
+@font-face {
+    font-family: titulos;
+    src: url('../fuentes/titulos.otf');
+}
