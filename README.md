@@ -1,1 +1,1 @@
-<h1>Bienvenido a... Silenciate.</h1>
+<img src="https://i.imgur.com/qQ6496X.png">
