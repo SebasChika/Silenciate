@@ -1,5 +1,4 @@
 ![Banner de Silénciate](https://i.imgur.com/qQ6496X.png)
-![Banner de Silénciate](https://i.imgur.com/qQ6496X.png)
 
 > **Silénciate** es una aplicación didáctica diseñada para medir y transformar el ruido ambiental en una herramienta educativa, promoviendo la autorregulación y la conciencia sobre la contaminación acústica dentro del entorno escolar.
 
